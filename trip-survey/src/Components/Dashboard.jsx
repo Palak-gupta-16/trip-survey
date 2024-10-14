@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Grid, Card, CardContent, Typography, Box, Slider } from '@mui/material';
 import axios from 'axios';
 import Navbar from './Navbar';
+import axiosInstance from '../axiosInstance';
 
 const Dashboard = () => {
   const [surveys, setSurveys] = useState([]);
@@ -10,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchSurveys = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/surveys');
+        const response = await axiosInstance.get('/api/surveys');
         setSurveys(response.data);
         calculatePercentage(response.data);
       } catch (error) {

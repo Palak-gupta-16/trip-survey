@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, TextField, Checkbox, FormControlLabel, Button, Typography, Box, CircularProgress } from '@mui/material';
 import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -51,7 +52,7 @@ const Form = () => {
     };
 
     setLoading(true);
-    axios.post('http://localhost:3000/api/survey', formData)
+    axiosInstance.post('/api/survey', formData)
       .then(() => {
         alert('Survey submitted!');
         setLoading(false);
